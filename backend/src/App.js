@@ -1,0 +1,17 @@
+require('dotenv').config();
+const express=require('express');
+const cors=require('cors');
+const helmet=require('helmet');
+const { pool }=require('./config/db');
+const routes=require('./routes');
+const {notFound,errorHandler}=require('./middleware/errors');
+const app=express();
+app.disable('x-powered-by');
+app.use(helmet());
+app.use(cors({origin:(process.env.FRONTEND_ORIGIN||'http://localhost:4200').split(',').map(s=>s.trim())}));
+app.use(express.json({limit:'20kb'}));
+app.get('/health',async(req,res)=>{try{await pool.query('SELECT 1');res.json({ok:true,backend:'Node.js',database:'MySQL'});}catch(err){res.status(503).json({ok:false,message:'MySQL no disponible'});}});
+app.use('/api',routes);
+app.use(notFound);
+app.use(errorHandler);
+module.exports=app;

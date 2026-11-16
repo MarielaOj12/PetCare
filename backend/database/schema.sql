@@ -1,0 +1,127 @@
+
+CREATE TABLE IF NOT EXISTS clinic_settings (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  clinic_name VARCHAR(120) NOT NULL,
+  short_name VARCHAR(80) NOT NULL,
+  eyebrow VARCHAR(130) NOT NULL,
+  hero_title VARCHAR(200) NOT NULL,
+  hero_subtitle TEXT NOT NULL,
+  slogan VARCHAR(200) NOT NULL,
+  about_title VARCHAR(200) NOT NULL,
+  about_text TEXT NOT NULL,
+  story TEXT NOT NULL,
+  mission TEXT NOT NULL,
+  address VARCHAR(255) NOT NULL,
+  city VARCHAR(120) NOT NULL,
+  phone VARCHAR(100) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  instagram VARCHAR(250) DEFAULT NULL,
+  founded_year VARCHAR(20) NOT NULL,
+  emergency_note VARCHAR(255) NOT NULL,
+  demo_notice VARCHAR(255) NOT NULL,
+  hero_video VARCHAR(255) NOT NULL,
+  pexels_video_url TEXT NOT NULL,
+  pexels_video_source TEXT NOT NULL,
+  hero_poster VARCHAR(255) NOT NULL,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS services (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(130) NOT NULL,
+  description TEXT NOT NULL,
+  icon VARCHAR(40) NOT NULL,
+  image_url TEXT,
+  duration VARCHAR(60) NOT NULL,
+  featured TINYINT(1) NOT NULL DEFAULT 0,
+  sort_order INT NOT NULL DEFAULT 0,
+  active TINYINT(1) NOT NULL DEFAULT 1
+);
+CREATE TABLE IF NOT EXISTS specialties (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(130) NOT NULL,
+  description TEXT NOT NULL,
+  image_url TEXT,
+  icon VARCHAR(30) NOT NULL,
+  sort_order INT NOT NULL DEFAULT 0,
+  active TINYINT(1) NOT NULL DEFAULT 1
+);
+CREATE TABLE IF NOT EXISTS prices (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  service_id INT DEFAULT NULL,
+  label VARCHAR(150) NOT NULL,
+  description TEXT NOT NULL,
+  amount DECIMAL(10,2) NOT NULL,
+  currency VARCHAR(4) NOT NULL DEFAULT 'Bs',
+  unit VARCHAR(60) NOT NULL,
+  featured TINYINT(1) NOT NULL DEFAULT 0,
+  sort_order INT NOT NULL DEFAULT 0,
+  active TINYINT(1) NOT NULL DEFAULT 1,
+  FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE SET NULL
+);
+CREATE TABLE IF NOT EXISTS gallery (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  image_url TEXT NOT NULL,
+  alt_text VARCHAR(250) NOT NULL,
+  caption VARCHAR(200) NOT NULL,
+  source_url TEXT,
+  sort_order INT NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS testimonials (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(120) NOT NULL,
+  pet VARCHAR(100) NOT NULL,
+  quote TEXT NOT NULL,
+  rating TINYINT NOT NULL DEFAULT 5,
+  sort_order INT NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS faqs (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  question VARCHAR(255) NOT NULL,
+  answer TEXT NOT NULL,
+  sort_order INT NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS business_hours (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  day_name VARCHAR(40) NOT NULL,
+  opening VARCHAR(100) NOT NULL,
+  sort_order INT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS highlights (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  value VARCHAR(30) NOT NULL,
+  label VARCHAR(90) NOT NULL,
+  sort_order INT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS contact_messages (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(120) NOT NULL,
+  email VARCHAR(150) NOT NULL,
+  phone VARCHAR(40) DEFAULT NULL,
+  subject VARCHAR(160) NOT NULL,
+  message TEXT NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE IF NOT EXISTS appointment_requests (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  owner_name VARCHAR(120) NOT NULL,
+  owner_email VARCHAR(150) NOT NULL,
+  owner_phone VARCHAR(40) NOT NULL,
+  pet_name VARCHAR(90) NOT NULL,
+  pet_type VARCHAR(60) NOT NULL,
+  service_id INT NULL,
+  preferred_date DATE NOT NULL,
+  preferred_time TIME NOT NULL,
+  notes TEXT,
+  status ENUM('pendiente','confirmada','cancelada') NOT NULL DEFAULT 'pendiente',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (service_id) REFERENCES services(id) ON DELETE SET NULL
+);
+CREATE TABLE IF NOT EXISTS chatbot_logs (
+  id BIGINT PRIMARY KEY AUTO_INCREMENT,
+  question TEXT NOT NULL,
+  response TEXT NOT NULL,
+  model VARCHAR(60) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX idx_contacts_date ON contact_messages(created_at);
+CREATE INDEX idx_appointments_date ON appointment_requests(preferred_date, preferred_time);
