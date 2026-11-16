@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
   chatInput='';
   chatSending=false;
   chatHealthText='';
-  chatMessages:ChatMessage[]=[{role:'assistant',content:'¡Hola! Soy Nala, tu asistente virtual. Puedo orientarte sobre los servicios, horarios y precios de ejemplo de PetCare. ¿Qué necesitas saber?'}];
+  chatMessages:ChatMessage[]=[{role:'assistant',content:'¡Hola! Soy Nala, tu asistente virtual. Puedo orientarte sobre los servicios, horarios y tarifas de PetCare. ¿Qué necesitas saber?'}];
   contactForm:ContactForm=this.blankContact();
   appointmentForm:AppointmentForm=this.blankAppointment();
   get minDate():string{return new Date().toLocaleDateString('sv-SE',{timeZone:'America/La_Paz'});}

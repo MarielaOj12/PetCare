@@ -1,4 +1,4 @@
-# Arquitectura y funcionamiento de PRACTICA_VET
+# Arquitectura y funcionamiento de PetCare
 
 ```text
 Navegador
@@ -44,13 +44,13 @@ El frontend **no contiene datos de la clínica duplicados**: consulta `GET /api/
 
 El servidor envía a Ollama la pregunta, hasta ocho mensajes recientes y contexto actualizado desde MySQL. El modelo se configura con `OLLAMA_MODEL=gemma3:4b`. No existe respuesta simulada en caso de caída del modelo: la API devuelve HTTP 503 con una instrucción de diagnóstico. No se usa un servicio de pago.
 
-## Seguridad incluida para una práctica
+## Medidas de seguridad incluidas
 
 - Consultas SQL parametrizadas; validación de campos en backend y formularios en Angular.
 - Límite de solicitudes en POST y límite del tamaño de JSON.
 - Cabeceras de seguridad mediante Helmet y CORS limitado al origen configurado.
 - Credenciales en `.env`, excluidas del repositorio. `backend/.env` se entrega solo como plantilla local sin contraseña.
-- No hay panel administrativo público: los datos se editan con MySQL Workbench en esta práctica.
+- No hay panel administrativo público: los datos se editan con MySQL Workbench en esta versión.
 
 ## Limitaciones honestas
 

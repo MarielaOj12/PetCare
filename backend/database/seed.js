@@ -7,12 +7,12 @@ const settings = {
   hero_subtitle: 'Atención veterinaria integral, profesional y llena de cariño para tus compañeros de vida.',
   slogan: 'Su bienestar es nuestra forma de querer.', about_title: 'Cuidamos de ellos como parte de tu familia.',
   about_text: 'En PetCare reunimos medicina preventiva, atención clínica y acompañamiento cercano. Queremos que cada visita sea tranquila, clara y respetuosa con los animales y sus familias.',
-  story: 'PetCare es una clínica ficticia creada como demostración académica de una plataforma veterinaria. Su historia, servicios, horarios, equipo y tarifas son datos de ejemplo editables desde MySQL.',
+  story: 'PetCare reúne información veterinaria, solicitudes de atención y orientación inicial mediante un asistente virtual. La información institucional puede actualizarse desde la base de datos.',
   mission: 'Ofrecer orientación responsable y una atención centrada en el bienestar animal, la prevención y la comunicación con cada familia.',
   address: 'Dirección por configurar · Cochabamba, Bolivia', city: 'Cochabamba, Bolivia',
   phone: '+591 000 00000 (demostración)', email: 'hola@petcare.demo', instagram: '',
-  founded_year: 'Proyecto académico', emergency_note: 'Si tu mascota presenta una emergencia, acude a un centro veterinario presencial.',
-  demo_notice: 'Sitio de demostración académica: nombre, dirección, teléfono, testimonios, horarios y precios son ilustrativos.',
+  founded_year: 'PetCare', emergency_note: 'Si tu mascota presenta una emergencia, acude a un centro veterinario presencial.',
+  demo_notice: 'Información y tarifas ilustrativas. Confirma los datos de contacto y la disponibilidad antes de solicitar atención.',
   hero_video: '/assets/animales.mp4',
   pexels_video_url: 'https://videos.pexels.com/video-files/4166347/4166347-uhd_3840_2160_30fps.mp4',
   pexels_video_source: 'https://www.pexels.com/video/dog-running-in-the-grass-field-4166347/',
@@ -54,7 +54,7 @@ const gallery = [
 ];
 const faqs = [
   ['¿Necesito una cita?', 'Recomendamos solicitarla por el formulario de esta web. Una solicitud no confirma automáticamente la atención.'],
-  ['¿Atienden emergencias?', 'Este sitio es de demostración. Ante una urgencia real, acude directamente a un centro veterinario operativo.'],
+  ['¿Atienden emergencias?', 'Ante una urgencia, acude directamente a un servicio veterinario de atención presencial.'],
   ['¿Cuánto cuesta una consulta?', 'En la sección de precios hay valores ilustrativos en bolivianos. Confirma el importe real con la clínica.'],
   ['¿Puedo llevar a mi gato?', 'El catálogo de ejemplo contempla atención para perros y gatos; la disponibilidad debe confirmarse.'],
   ['¿El chatbot puede diagnosticar?', 'No. El asistente da información sobre la clínica y orientación general; no reemplaza una valoración veterinaria.']

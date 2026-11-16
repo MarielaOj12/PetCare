@@ -1,5 +1,5 @@
 {
-  "name": "practica-vet-backend",
+  "name": "petcare-backend",
   "version": "1.0.0",
   "private": true,
   "description": "API REST MySQL y chatbot Ollama para PetCare",
